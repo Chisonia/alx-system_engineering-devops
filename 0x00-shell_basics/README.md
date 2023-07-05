@@ -27,3 +27,4 @@ ls -la . .. /boot = lists all files (even ones with names beginning with a perio
 
 file /tmp/iamafile = prints the type of the file named iamafile in /temp directory
 
+ln -s /bin/ls _ls_ = Creates symbolic link to /bin/ls, named __ls__
