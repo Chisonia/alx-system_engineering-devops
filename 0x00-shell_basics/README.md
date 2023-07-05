@@ -7,3 +7,4 @@ ls -la = Display current directory contents, including hidden files (starting wi
 ls -lan = Long format- with user and group IDs displayed numerically
 And hidden files (starting with .)
 mkdir /tmp/my_first_directory = Create a script that creates a directory named my first directory in the /tmp/ directory
+mv /tmp/betty /tmp/my_first_directory = Move the file betty from /tmp/ to /tmp/my first directory
