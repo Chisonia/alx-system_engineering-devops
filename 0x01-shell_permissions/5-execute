@@ -1,6 +1,2 @@
 #!/bin/bash
-<<<<<<< HEAD
 chmod 744 hello
-=======
-chmod 100 hello
->>>>>>> c61ec2360fcfb431793dafadbe1478f6367086e4
