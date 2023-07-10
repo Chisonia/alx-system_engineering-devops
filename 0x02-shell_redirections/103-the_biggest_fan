@@ -1,2 +1,2 @@
 #!/bin/bash
-tail -n +2 | sort | cut -f1 | uniq -C | sort -g -r | head -11 | tr -s "" | cut -d"" -f3
+cut -f1 web_server_logs.tsv | sort | uniq -c | sort -rn | head -n11
