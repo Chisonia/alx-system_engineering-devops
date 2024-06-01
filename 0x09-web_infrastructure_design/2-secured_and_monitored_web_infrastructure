@@ -1,0 +1,57 @@
+The following were added:
+- SSL Certificate: they are public key needed to begin a secure session. This encryts the data to avoid hackers from accessing the data of the users. It uses the HTTPS protocol which is more secure than the HTTP protocol.
+- Third server: A third server was added. The will further prevent no-redundacy and failure tha comes with SPOF
+- Three fire wall: This will further offer protection by screening the traffic according to pre-defined rules.
+- Monitoring system (data collector for Sumologic): This helps to detect down time, collect data like the Query per sec  value of the site. The monitoring system gives information to the load balancer in cases of downtime of one server, the load balancer redirects the traffic to other servers.
+
+
+Fire wall is a security tool that creates a division  between a private network and outer network. This is supposed to allow, limit, and block network traffic based on preconfigured  rules by analyzing data packets that request entry to the network.
+
+Traffics are served over HTTPS for the following reasons:
+1. Encryption
+Data Protection: HTTPS encrypts the data transmitted between the user's browser and the web server using TLS (Transport Layer Security). This encryption ensures that sensitive information, such as login credentials, credit card numbers, and personal data, cannot be intercepted and read by malicious actors during transmission.
+2. Authentication
+Server Identity Verification: HTTPS uses SSL/TLS certificates issued by trusted Certificate Authorities (CAs) to authenticate the web server's identity. This helps prevent man-in-the-middle attacks where an attacker could impersonate the web server and steal sensitive data.
+3. Data Integrity
+Preventing Data Tampering: HTTPS ensures that the data sent between the server and the client is not altered or corrupted during transmission. Any tampering attempts would be detected, protecting the integrity of the information.
+4. Privacy
+Confidential Communication: By encrypting the communication, HTTPS prevents unauthorized parties from eavesdropping on the data exchanged between the client and server. This is crucial for maintaining user privacy.
+5. Trust and Credibility
+User Trust: Modern browsers indicate secure HTTPS connections with padlock icons or "Secure" labels in the address bar. Users are more likely to trust and interact with websites that use HTTPS, knowing that their data is secure.
+Avoiding "Not Secure" Warnings: Browsers like Chrome and Firefox mark websites without HTTPS as "Not Secure," which can deter users from visiting or interacting with the site.
+6. SEO Benefits
+Search Engine Ranking: Major search engines like Google give preference to HTTPS websites in their search rankings. Using HTTPS can improve a website's visibility and search engine optimization (SEO).
+7. Compliance
+Regulatory Requirements: Many regulations and standards, such as GDPR (General Data Protection Regulation), PCI DSS (Payment Card Industry Data Security Standard), and HIPAA (Health Insurance Portability and Accountability Act), require the use of HTTPS to protect sensitive data.
+8. Modern Web Features
+Access to New Features: Many modern web features and APIs, such as HTTP/2, Service Workers, and Progressive Web Apps (PWAs), require HTTPS. This ensures a better and more secure user experience.
+
+
+Monitoring is used for tracking, analyzing, and managing the performance, availability, and health of infrastructure, applications, and services. 
+
+The monitoring tool collects data by utilizing agents or collectors that are installed on the web server or network infrastructure. These agents gather various metrics and logs from the server and send them to the monitoring system for analysis and visualization
+
+The Queries Per Second (QPS) of my web server,  will be derived by tracking the number of requests the server handles every second. This can help me understand the server load, performance, and detect any potential issues. 
+
+
+Terminating SSL (Secure Sockets Layer) or TLS (Transport Layer Security) at the load balancer level can introduce several potential issues, especially concerning security and privacy. This is because the data between load balancer and the backend are unecrpyted thereby leaving the internal network exposed. End to end encrption is required
+
+Having only one MySQL server capable of accepting writes in a production environment can lead to several potential issues related to SPOF, scalability, availability, performance, and fault tolerance. 
+
+Having servers with all it's components can lead to the following:
+1. Scalability Issues
+Resource Contention: When a server handles multiple roles (database, web server, and application server), these components can compete for the same resources (CPU, memory, disk I/O). High resource usage by one component (e.g., database queries) can negatively impact the performance of other components (e.g., web server response times).
+Limited Scalability: Scaling out a monolithic server means duplicating all components, which is inefficient. For example, if only the web server needs more capacity, you still have to scale the database and application server, leading to unnecessary resource usage and costs.
+2. Maintenance Complexity
+Downtime for Updates: Updates or maintenance to one component require taking the entire server offline, affecting all services hosted on it. This leads to higher downtime and impacts the availability of the entire application.
+Complex Upgrades: Upgrading one part of the stack (e.g., database) might introduce compatibility issues with other parts (e.g., web server or application server), complicating the maintenance process.
+3. Reliability and Fault Tolerance
+Single Point of Failure: If a server fails, all components (database, web server, and application server) go down simultaneously, leading to complete service disruption. This setup lacks redundancy and increases the risk of extended downtime.
+Isolation of Failures: Issues in one component (e.g., a bug in the application server) can cascade and affect the performance or stability of other components on the same server.
+4. Resource Management
+Inefficient Resource Utilization: Different components have varying resource needs. For example, databases may need more disk I/O and memory, while web servers might need more CPU and network bandwidth. A monolithic server setup cannot optimize resources for the specific needs of each component, leading to inefficient resource utilization.
+Difficulty in Monitoring and Tuning: It is harder to monitor, diagnose, and tune performance issues when multiple critical components share the same resources. Isolating the root cause of performance degradation can be more challenging.
+5. Deployment and Development Flexibility
+Slower Deployments: Deploying updates to one component requires redeploying the entire monolithic server, which can slow down the deployment process and increase the risk of introducing errors.
+Lack of Modular Development: Development teams might face difficulties in adopting agile practices when all components are tightly coupled, reducing flexibility and slowing down innovation.
+

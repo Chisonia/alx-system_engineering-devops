@@ -1,0 +1,19 @@
+A server is a computer that stores a web server software. It provides services, resources or data to other computers.
+
+A domain name provides a human-readable address for accessing websites and online resources. They are matched to the ip address of the server by the DNS (Domain Name System).
+
+The type of DNS record www in www.foobar.com is a CNAME record. CNAME are alias used to store domain or subdomain Ip address.
+
+The web server is a software that delivers web pages. It is responsible for serving static web content, and handles HTTP request and response.
+
+The application server focuses on executing server-side logic, running application  code and managing business logic. It often includes features like session management, authentication  and database connections.
+The database stores and manages data, optimizes data storage and performance. It provides data persistence and enables data querying retrieval. 
+
+The server uses protocols (e.g HTTP(S)) and technologies to communicate with the user.
+
+The issues with this infrastructure includes:
+- SPOF(Single Point Failure): This infrastructure  lacks redundancy because it uses only one web server, code base, application server and database. Therefore if any part of this structure dysfunctions it will cause the entire system to fail.
+There will be disruption in the activity of the website if a maintenance like code deployment is to be carried out because there's no backup or replica server.
+- The structure lacks a load balancer. This will make it difficult to scale when there is high traffic on the website.
+- The structure also lacks the secure HTTPS. Thereby making the data at risk of being retrieved by hackers due to   lack of encryption.
+- Lacks the firewall that creates a division  between a private network and outer network. This is supposed to allow, limit, and block network traffic based on preconfigured  rules by analyzing data packets that request entry to the network.

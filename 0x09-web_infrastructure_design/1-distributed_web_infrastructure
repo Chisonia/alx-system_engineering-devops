@@ -1,0 +1,26 @@
+The following were added:
+- Load balancer: To help distribute the traffic to the 2 servers
+- Second server: This reduces site failure caused by non-redundancy as the traffic will be shared and the second will be able to carry on with the functionality of the website  in case of maintenance of the first server.
+
+The distribution algorithm of my load balancer  is "least connection first scheduling". Requests are first served to the server currently handling the least number of persistent  connections.   
+
+My load balancer is enabling the Active-Active setup. Which means that all the servers are active at every point except during maintenance. However, the Active-Passive works in a pattern where one server is active while the other is passive. The active one performs the work and when there's downtime (maintenance), the passive server takes over.
+
+A database Primary-Replica (Master-Slave) cluster is a architecture where Primary (Master) node:  
+ -Accepts write requests (INSERT, UPDATE, DELETE)
+ - Processes transactions
+ - Replicates data to Replica nodes
+While Replica (Slave) nodes:
+  - Receive replicated data from Primary node
+ - Maintain a copy of the database
+ Serve read requests (SELECT) Write requests are sent to the Primary node. Primary node processes transactions and writes data to its local storage. Primary node replicates the written data to one or more Replica nodes. Replica nodes apply the replicated data to their local storage. Read requests are sent to one or more Replica nodes.Replica nodes serve data from their local storage.
+
+ The key difference between the primary node and replica node are as follows:
+ - Write requets: primary node accepts writes, while replica nodes typically forward writes to the primary.
+ - Data authority: primary node has the authoritative copy of data, while replica node have a replicated copy.
+ - Read requests: Both primary and replica nodes can serve read requests, but replica nodes may have slightly old data. 
+The issues with this infrastructure includes:
+-  SPOF(Single Point Failure): This infrastructure  lacks redundancy because it uses only one load balancer. Therefore load balancer dysfunctions it will cause the entire system to fail.
+- The structure lacks the secure HTTPS. Thereby making the data at risk of being retrieved by hackers due to   lack of encryption.
+- Lacks the firewall that creates a division  between a private network and outer network. This is supposed to allow, limit, and block network traffic based on preconfigured  rules by analyzing data packets that request entry to the network.
+- There are no monitoring systems to detect down time( especially during maintence) and revert back to the load balancer to divert traffic away from the server that is down.
