@@ -1,0 +1,5 @@
+This infrastructure was design to enforce security using end to end encrpytion, and a fire wall is placed in front to access traffic and defer those traffic which doesn't meet the pre-deined requirement.
+One more load balancer was added to avoid non-redundancy and SPOF. One load balancer distributes traffic to each server.
+The components were split to there individual server with a monitoring system attached to each server.
+The database server has a primary node and replica node to enable storage of copy of data.
+This infrastructure promotes scalability, security and data privacy.
