@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+# script is installs Nginx web server on my server
+
+# To update the package list
+apt-get update
+
+# Install Nginx
+apt-get install -y nginx
+
+#configuration of server to allow request from port 8
+ufw allow 'Nginx HTTP'
+
+# Creating a new index.html with "Hello World!" content
+echo 'Hello World!' > /var/www/html/index.html
+
+# Ensure Nginx is running
+service nginx start
